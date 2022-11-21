@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Test.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Test.View"
+    Shell.PresentationMode="Modal"
+    Shell.FlyoutBehavior="Disabled">
+
+    <Shell.Resources>
+        <Style TargetType="ShellContent" x:Key="NotificationStyle">
+            <Style.Triggers>
+                <Trigger TargetType="ShellContent" Property="IsChecked" Value="True">
+                    <Setter Property="Icon" Value="message"/>                  
+                </Trigger>
+                   <Trigger TargetType="ShellContent" Property="IsChecked" Value="False">
+                    <Setter Property="Icon" Value="message"/>                  
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+    </Shell.Resources>
+   
+
+
+    <!--Create and Register Tab Bar in the Shell-->
+    <TabBar  Route="BottomNavPage" Style="{StaticResource TabBarShell}">
+
+        <Tab Icon="home" x:Name="HOME_TAB" Title="Home">
+            <ShellContent ContentTemplate="{DataTemplate local:HomePage}" Route="HomePage"/>
+        </Tab>
+        <Tab Icon="pbm_card_icon" x:Name="RXCARD_TAB" Title="RX Card">
+            <ShellContent   ContentTemplate="{DataTemplate local:RxCardPage}" Route="RxCardPage"/>
+        </Tab>
+       
+        <Tab Icon="mail_menu_white"  x:Name="MAIL_TAB"  Title="Mail">
+            <ShellContent   ContentTemplate="{DataTemplate local:TestPage}" Route="TestPage"/>
+        </Tab>
+     
+       <ShellContent  Title="Notifications"  Style="{StaticResource NotificationStyle}"   ContentTemplate="{DataTemplate local:NotificationsPage}" Route="NotificationsPage"/>
+        
+        <Tab Icon="more"  x:Name="MORE_MENU_TAB" Title="More">
+            <ShellContent   ContentTemplate="{DataTemplate local:MoreMenuPage}" Route="MoreMenuPage"/>
+        </Tab>
+
+    </TabBar>
+
+
+    
+
+</Shell>
+
